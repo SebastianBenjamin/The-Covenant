@@ -64,19 +64,19 @@ function getverses(){
 }
 
 function showverse(gbook,gchapter) {
+           
     var bookListValue = document.getElementById('book-list').value.trim();
     var chapterListValue = document.getElementById('chapter-list').value.trim();
 
-    if (bookListValue === "" || chapterListValue === '' || Number(chapterListValue) < 1) {
-
-        alert("Invalid inputs!");
-
-        document.getElementById('book-list').value = '';
-        document.getElementById('chapter-list').value = '';
-        
-        
-        return 0;
+    if (gbook === '' || gchapter === 0) {
+        if (bookListValue === "" || chapterListValue === '' || Number(chapterListValue) < 1) {
+            alert("Invalid inputs!");
+            document.getElementById('book-list').value = '';
+            document.getElementById('chapter-list').value = '';
+            return 0;
+        }
     }
+    
     var display = document.getElementById('showverse');
     var arr_verse = [];
     var api = '';
@@ -110,6 +110,9 @@ function showverse(gbook,gchapter) {
            }
            document.getElementById('book-list').value=gbook;
         document.getElementById('chapter-list').value=gchapter;
+    
+        autoFill(document.getElementById('chapter-list'), 'data-chapter-list');
+        showverse('',0);
         document.getElementById('verse-list').value='';
         vod=true;
         var book = gbook.toLowerCase().replaceAll(" ","");
@@ -157,12 +160,14 @@ function showverse(gbook,gchapter) {
                 currentchapter=chapter;
             display.innerHTML+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+ " : " +`${verse}</p>`;
             display.innerHTML += `<p><b>${got_items.verse}</b> : ${got_items.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>`;
+            
     // <button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
     // <button class="chp-nxt" id="chp-nxt"onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>
         }
     }
 }
 function autoFill(input, datalistId) {
+    // getchapters();
     var datalist = document.getElementById(datalistId);
     var options = datalist.getElementsByTagName('option');
     var inputValue = input.value.toLowerCase();
@@ -204,7 +209,8 @@ function randomverse() {
             // document.getElementById('chapter-list').placeholder=verse.chapter;
             // document.getElementById('verse-list').placeholder=verse.verse;
             currentchapter=verse.chapter;
-
+            // document.getElementById('book-list').value=verse.bookname;
+            // document.getElementById('chapter-list').value=verse.chapter;
         } else {
             var display = document.getElementById('showverse');
             display.innerHTML = "No verse of the day available.";
