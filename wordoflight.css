@@ -112,14 +112,23 @@ body{
     font-family: "Fira Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
+    
 }
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: grey;
+}
+::-webkit-scrollbar-thumb {
+  background: darkblue;
+}
+
 .navbar{
     /* width:100%; */
     height:min-content;
     backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(255, 255, 255, 0.75);
     position: sticky;
-    top: 0;
+    /* top: 0; */
     gap: 0;
     padding: 5px;
     display: flex;
@@ -149,6 +158,11 @@ body{
     }
 }
 .div-select{
+  position: sticky;
+  top:0;
+  background-color: white;
+  
+  z-index: 10;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -182,6 +196,7 @@ body{
   }
 }
 .showverse{
+
 position: relative;
 width: 100%;
    padding: 20px 0 20px 0;
@@ -218,8 +233,8 @@ font-size: larger;
 
 .chp-prev{
   /* display: none; */
-  position: absolute;
-top: 10%;
+  position: fixed;
+top: 50%;
 left: 10px;
   height: fit-content;
   width: fit-content;
@@ -230,8 +245,8 @@ left: 10px;
 }
 .chp-nxt{
   /* display: none; */
-  position: absolute;
-top: 10%;
+  position: fixed;
+top: 50%;
 right: 10px;
   height: fit-content;
   width: fit-content;
@@ -242,6 +257,7 @@ right: 10px;
 
 }
 .chp-nxt:hover ,.chp-prev:hover {
-  transform: scale3d(1.5,1.5,15);
-  transition: transform 0.5s ease;
+  transform: scale3d(1.2,1.2,1.2);
+  transition: transform 0.3s ease;
+
 }

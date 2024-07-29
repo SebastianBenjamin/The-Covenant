@@ -43,6 +43,7 @@ function getchapters(){
 }
 
 function getverses(){
+ 
     var display=document.getElementById('data-verse-list');
     var bookname=document.getElementById('book-list').value.toLowerCase();
     var chapternum=document.getElementById('chapter-list').value;
@@ -63,24 +64,53 @@ function getverses(){
 }
 
 function showverse(gbook,gchapter) {
+    var bookListValue = document.getElementById('book-list').value.trim();
+    var chapterListValue = document.getElementById('chapter-list').value.trim();
+
+    if (bookListValue === "" || chapterListValue === '' || Number(chapterListValue) < 1) {
+
+        alert("Invalid inputs!");
+
+        document.getElementById('book-list').value = '';
+        document.getElementById('chapter-list').value = '';
+        
+        
+        return 0;
+    }
     var display = document.getElementById('showverse');
     var arr_verse = [];
     var api = '';
     var vod=false;
    var chp_c=0;
-   
+ 
     if(gbook.length<1&&gchapter===0){
     
     var book = document.getElementById('book-list').value.toLowerCase().replaceAll(" ","");
     var chapter = document.getElementById('chapter-list').value;
     var verse = document.getElementById('verse-list').value;
-    if (verse.length < 1) {
-        api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-kjv/books/${book}/chapters/${chapter}.json`;
+    console.log(verse);
+    if (verse.length < 1 ||verse==0) {
+        verse='';
+        console.log("bc");
+        document.getElementById('verse-list').value='';
+              api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-kjv/books/${book}/chapters/${chapter}.json`;
     } else {
+        console.log("bcv");
+
         api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-kjv/books/${book}/chapters/${chapter}/verses/${verse}.json`;
     }
 }
     else{
+        document.getElementById('book-list').value='';
+        document.getElementById('chapter-list').value='';
+        document.getElementById('verse-list').value='';
+      
+        if(gchapter===0){
+            gchapter=1;
+           }
+           document.getElementById('book-list').value=gbook;
+        document.getElementById('chapter-list').value=gchapter;
+        document.getElementById('verse-list').value='';
         vod=true;
         var book = gbook.toLowerCase().replaceAll(" ","");
         var chapter = gchapter;
@@ -95,9 +125,12 @@ function showverse(gbook,gchapter) {
     xhttp.open("GET", api, true);
     xhttp.send();
     xhttp.onload = function () {
+        console.log(this.status);
+      
         var got_items = JSON.parse(this.responseText);
 
-        if (vod||verse.length <=1) {
+        if (vod||verse.length < 1) {
+
              currentchapter=chapter;
             if (currentchapter<1){
     chp_c=1;
@@ -108,6 +141,7 @@ function showverse(gbook,gchapter) {
             var arr='';
             arr+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}</p>`
             arr+="<ol>";
+            
             for (var i = 0; i < got_items.data.length; i++) {
                 var currentVerse = got_items.data[i].verse;
             
@@ -116,15 +150,15 @@ function showverse(gbook,gchapter) {
                     arr += `<li> ${got_items.data[i].text.replaceAll("¶", "").replaceAll(".", ". ")}</li>`;
                 }
             }
-            display.innerHTML+=arr+"</ol>"+`<button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(chp_c-1)+`)">&#11207;</button>
-    <button class="chp-nxt" id="chp-nxt" onclick="showverse('${book}',`+(chp_c+1)+`)">&#11208;</button>`
+            display.innerHTML+=arr+"</ol>"+`<button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
+    <button class="chp-nxt" id="chp-nxt" onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>`
         }
-               else{
+               else {
                 currentchapter=chapter;
             display.innerHTML+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+ " : " +`${verse}</p>`;
-            display.innerHTML += `<p><b>${got_items.verse}</b> : ${got_items.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>
-    <button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(chp_c-1)+`)">&#11207;</button>
-    <button class="chp-nxt" id="chp-nxt"onclick="showverse('${book}',`+(chp_c+1)+`)">&#11208;</button>`;
+            display.innerHTML += `<p><b>${got_items.verse}</b> : ${got_items.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>`;
+    // <button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
+    // <button class="chp-nxt" id="chp-nxt"onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>
         }
     }
 }
@@ -166,9 +200,9 @@ function randomverse() {
                 <p><b>${verse.verse}</b> : ${verse.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>
                 <button class='rfchp' onclick="showverse('${verse.bookname}',${verse.chapter})">Read full chapter</button>
             `;
-            document.getElementById('book-list').placeholder=verse.bookname;
-            document.getElementById('chapter-list').placeholder=verse.chapter;
-            document.getElementById('verse-list').placeholder=verse.verse;
+            // document.getElementById('book-list').placeholder=verse.bookname;
+            // document.getElementById('chapter-list').placeholder=verse.chapter;
+            // document.getElementById('verse-list').placeholder=verse.verse;
             currentchapter=verse.chapter;
 
         } else {
