@@ -97,7 +97,7 @@ function showverse(gbook,gchapter) {
     xhttp.onload = function () {
         var got_items = JSON.parse(this.responseText);
 
-        if (vod||verse.length < =1) {
+        if (vod||verse.length <=1) {
              currentchapter=chapter;
             if (currentchapter<1){
     chp_c=1;
@@ -119,7 +119,7 @@ function showverse(gbook,gchapter) {
             display.innerHTML+=arr+"</ol>"+`<button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(chp_c-1)+`)">&#11207;</button>
     <button class="chp-nxt" id="chp-nxt" onclick="showverse('${book}',`+(chp_c+1)+`)">&#11208;</button>`
         }
-               else {
+               else{
                 currentchapter=chapter;
             display.innerHTML+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+ " : " +`${verse}</p>`;
             display.innerHTML += `<p><b>${got_items.verse}</b> : ${got_items.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>
