@@ -1,4 +1,29 @@
 var currentchapter='';
+var ver;
+ function onloadfun(){
+
+    var display=document.getElementById('data-version-list');
+    
+    display.innerHTML="";
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "./books.json");
+    xhttp.send();
+    xhttp.onload = function () { 
+        // alert("hai");
+        var got_items =  JSON.parse(this.responseText) ;
+        for(let i=0;i<got_items.Versions.length;i++){
+            if(got_items.Versions[i].id==='en-kjv'){
+                display.innerHTML+=`
+                <option  value="${got_items.Versions[i].id}" selected >${got_items.Versions[i].name}</option>`;   
+            }
+            else{
+            display.innerHTML+=`
+             <option value="${got_items.Versions[i].id}">${got_items.Versions[i].name}</option>`;}
+             getversionname(document.getElementById('data-version-list').value);    
+            }
+ }
+
+}
 
 function getbooks(){
     var display=document.getElementById('data-book-list');
@@ -43,7 +68,8 @@ function getchapters(){
 }
 
 function getverses(){
- 
+
+
     var display=document.getElementById('data-verse-list');
     var bookname=document.getElementById('book-list').value.toLowerCase();
     var chapternum=document.getElementById('chapter-list').value;
@@ -64,7 +90,8 @@ function getverses(){
 }
 
 function showverse(gbook,gchapter) {
-           
+    var version=document.getElementById('data-version-list').value;  
+    getversionname(version);    
     var bookListValue = document.getElementById('book-list').value.trim();
     var chapterListValue = document.getElementById('chapter-list').value.trim();
 
@@ -93,11 +120,11 @@ function showverse(gbook,gchapter) {
         verse='';
         console.log("bc");
         document.getElementById('verse-list').value='';
-              api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-kjv/books/${book}/chapters/${chapter}.json`;
+              api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
     } else {
         console.log("bcv");
 
-        api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-kjv/books/${book}/chapters/${chapter}/verses/${verse}.json`;
+        api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}/verses/${verse}.json`;
     }
 }
     else{
@@ -117,7 +144,7 @@ function showverse(gbook,gchapter) {
         vod=true;
         var book = gbook.toLowerCase().replaceAll(" ","");
         var chapter = gchapter;
-        api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/en-kjv/books/${book}/chapters/${chapter}.json`;
+        api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
     }
    
    
@@ -142,7 +169,7 @@ function showverse(gbook,gchapter) {
                 chp_c=currentchapter;
             }
             var arr='';
-            arr+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}</p>`
+            arr+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+"  "+`${ver}</p>`
             arr+="<ol>";
             
             for (var i = 0; i < got_items.data.length; i++) {
@@ -218,3 +245,22 @@ function randomverse() {
     }
 }
 
+function getversionname(id) {
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "./books.json");
+    xhttp.send();
+    xhttp.onload = function () { 
+        var bibleVersions=JSON.parse(this.responseText);
+    for (let i = 0; i < bibleVersions.Versions.length; i++) {
+        
+      if (bibleVersions.Versions[i].id.includes(id)) {
+       ver=  bibleVersions.Versions[i].abr;
+       console.log(typeof ver);
+       console.log(ver);
+       break;
+      }
+    }
+  }
+
+}

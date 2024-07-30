@@ -67,5 +67,18 @@
     { "name": "3 John", "chapters": 1 },
     { "name": "Jude", "chapters": 1 },
     { "name": "Revelation", "chapters": 22 }
-  ]
-}
+  ],
+    "Versions": [
+      { "id": "en-kjv", "name": "King James Version", "abr": "KJV" },
+      { "id": "en-rv", "name": "Revised Version", "abr": "RV" },
+      { "id": "en-web", "name": "World English Bible", "abr": "WEB" },
+      { "id": "en-webus", "name": "World English Bible - US", "abr": "WEBUS" },
+      { "id": "en-webbe", "name": "World English Bible British Edition", "abr": "WEBBE" },
+      { "id": "en-asv", "name": "American Standard Version", "abr": "ASV" },
+      { "id": "en-lsv", "name": "Literal Standard Version", "abr": "LSV" },
+      { "id": "en-dra", "name": "Douay-Rheims American Edition", "abr": "DRA" },
+      { "id": "en-gnv", "name": "Geneva Bible", "abr": "GNV" }
+     
+    ]
+  }
+  
