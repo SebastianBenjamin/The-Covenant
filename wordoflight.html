@@ -27,7 +27,7 @@
     </div>
 <div>
     <label for="book-list">Book : </label>
-    <input list="data-book-list" type="text" name="book-list" id="book-list" placeholder="Enter Book name" onfocus="getbooks()" onblur="autoFill(this, 'data-book-list')" >
+    <input list="data-book-list" type="text" name="book-list" id="book-list" placeholder="Enter Book name" onfocus="getbooks()" onblur="autoFill(this, 'data-book-list')" onchange="clrvc();">
     <datalist id="data-book-list">
     </datalist>
 </div><div>
@@ -42,7 +42,7 @@
     </datalist>
 </div>
 <div class="readbuttondiv">
-<button onclick="showverse('',0)" id="read-button"> </button>
+<button onclick="showverse('',0,true)" id="read-button"> </button>
 <label for="read-button">Read</label>
 </div></div>
 <div id="showverse" class="showverse">

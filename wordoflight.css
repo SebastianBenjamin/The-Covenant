@@ -125,8 +125,8 @@ body{
 .navbar{
     /* width:100%; */
     height:min-content;
-    backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.75);
+    /* backdrop-filter: blur(16px) saturate(180%); */
+    background-color: aliceblue;
     position: sticky;
     /* top: 0; */
     gap: 0;
@@ -167,15 +167,20 @@ body{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 3px 0 3px 0;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
   
   label{
     font-size: larger;
   }
-  input{
-    height: 40px;
+  select,input{
+    border: 0.5px solid rgba(128, 128, 128, 0.153);
+    border-radius: 5px;
+    height: 30px;
     text-align: center;
+    width: min-content;
+    option{
+      text-align: left;
+    }
   }
   
   .readbuttondiv{
@@ -186,8 +191,8 @@ body{
       font-size: small;
     }
     button{
-      height: 50px;
-      width: 50px;
+      height: 40px;
+      width: 40px;
       background:url(./book.png) ;
       background-size: contain;
       border: 0;
@@ -216,7 +221,9 @@ width: 100%;
   margin:10px 100px 10 100px;
   height: fit-content;
   width:fit-content;
-  float: right;
+   background-color: aliceblue;
+   padding: 5px 10px;
+   border: 0; 
 }
 
 }
