@@ -221,11 +221,17 @@ width: 100%;
   margin:10px 100px 10 100px;
   height: fit-content;
   width:fit-content;
-   background-color: aliceblue;
-   padding: 5px 10px;
-   border: 0; 
+   background-color:transparent;
+   padding: 5px 10px 5px 10px;
+   border: 1px solid black; 
+   border-radius: 5px;
+   color: black;
+   }
+.rfchp:hover{
+  color: black;
+  background-color: lightskyblue; 
+  border-color: transparent;
 }
-
 }
 .head{
 

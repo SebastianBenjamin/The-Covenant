@@ -233,14 +233,10 @@ function randomverse() {
             <p class='head'>VERSE OF THE DAY</p>
                 <p class='ref'>${verse.bookname} : ${verse.chapter} : ${verse.verse}</p>
                 <p><b>${verse.verse}</b> : ${verse.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>
-                <button class='rfchp' onclick="readfull('${verse.bookname}',${verse.chapter})">Read full chapter</button>
+                <button class='rfchp' onclick="readfull('${verse.bookname}',${verse.chapter})">Read full chapter &#11208;</button>
             `;
-            // document.getElementById('book-list').placeholder=verse.bookname;
-            // document.getElementById('chapter-list').placeholder=verse.chapter;
-            // document.getElementById('verse-list').placeholder=verse.verse;
-            currentchapter=verse.chapter;
-            // document.getElementById('book-list').value=verse.bookname;
-            // document.getElementById('chapter-list').value=verse.chapter;
+             currentchapter=verse.chapter;
+            
         } else {
             var display = document.getElementById('showverse');
             display.innerHTML = "No verse of the day available.";
