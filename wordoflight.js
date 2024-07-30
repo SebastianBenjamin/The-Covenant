@@ -259,6 +259,9 @@ function randomverse() {
     xhttp.open("GET", api, true);
     xhttp.send();
     xhttp.onload = function () {
+        document.getElementById('book-list').value='';
+        document.getElementById('chapter-list').value='';
+        document.getElementById('verse-list').value='';
         var got_items = JSON.parse(this.responseText);
         if (got_items.length > 0) {
             var verse = got_items[0]; 
