@@ -6,7 +6,10 @@ var vse_en=document.getElementById("verse-list");
 var bk_en=document.getElementById("book-list");
 chp_en.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
+
     event.preventDefault();
+    autoFill(document.getElementById('chapter-list'), 'data-chapter-list');
+
     showverse('',0,true);
   }
 });
@@ -19,6 +22,8 @@ vse_en.addEventListener("keypress", function(event) {
 bk_en.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
+    autoFill(document.getElementById('book-list'), 'data-book-list');
+
     showverse('',0,true);
   }
 });
@@ -111,125 +116,248 @@ function getverses(){
 }
 }
 }
-
-function showverse(gbook,gchapter,sts) {
+function showverse(gbook, gchapter, sts) {
     var display = document.getElementById('showverse');
     display.innerHTML = "";
-    var version=document.getElementById('data-version-list').value;  
-    getversionname(version);    
+    var version = document.getElementById('data-version-list').value;
+    getversionname(version);
     var bookListValue = document.getElementById('book-list').value.trim();
     var chapterListValue = document.getElementById('chapter-list').value.trim();
 
     if (sts) {
         if (bookListValue === "" || chapterListValue === '' || Number(chapterListValue) < 1) {
             alert("Invalid inputs!");
-            
             document.getElementById('chapter-list').value = '';
             return 0;
         }
     }
-    
-  
+
     var arr_verse = [];
     var api = '';
-    var vod=false;
-   var chp_c=0;
- 
-    if(gbook.length<1&&gchapter===0){//with input that is ('',0,true)
-    
-    var book = document.getElementById('book-list').value.toLowerCase().replaceAll(" ","");
-    var chapter = document.getElementById('chapter-list').value;
-    var verse = document.getElementById('verse-list').value;
-    console.log(verse);
-    if (verse.length < 1 ||verse==0) {
-        verse='';
-        console.log("bc");
-        document.getElementById('verse-list').value='';
-              api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
+    var vod = false;
+
+    if (gbook.length < 1 && gchapter === 0) {
+        var book = document.getElementById('book-list').value.toLowerCase().replaceAll(" ", "");
+        var chapter = document.getElementById('chapter-list').value;
+        var verse = document.getElementById('verse-list').value;
+
+        if (verse.length < 1 || verse == 0) {
+            verse = '';
+            api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
+        } else {
+            api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}/verses/${verse}.json`;
+        }
     } else {
-        console.log("bcv");
-
-        api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}/verses/${verse}.json`;
-    }
-}
-    else{
-
-        // document.getElementById('book-list').value='';
-        document.getElementById('chapter-list').value='';
+        document.getElementById('chapter-list').value = '';
         var chapter = gchapter;
-        if(chapter===0){
-            chapter=1;
-           }
-           autoFill(document.getElementById('chapter-list'), 'data-chapter-list');
-        showverse('',0);
-        document.getElementById('verse-list').value='';
-        vod=true;
-        var book = gbook.toLowerCase().replaceAll(" ","");
-        
-        document.getElementById('chapter-list').value=chapter;
-        document.getElementById('book-list').value=book;
+
+        if (chapter === 0) {
+            chapter = 1;
+        }
+
+        autoFill(document.getElementById('chapter-list'), 'data-chapter-list');
+        document.getElementById('verse-list').value = '';
+        vod = true;
+        var book = gbook.toLowerCase().replaceAll(" ", "");
+
+        document.getElementById('chapter-list').value = chapter;
+        document.getElementById('book-list').value = book;
         api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
     }
-   
-   
-
-
 
     const xhttp = new XMLHttpRequest();
     xhttp.open("GET", api, true);
     xhttp.send();
     xhttp.onload = function () {
-        console.log(this.status);
-        if(this.status===403){
-            display.style.color='red';
-
-            display.innerHTML=
-        `<p class='ref'>Invalid Reference !</p><p>Please enter a valid reference</p>`;
-      
-        setTimeout(function() {
-            location.reload();
-            display.style.color='auto';
-        }, 2000);
+        if (this.status === 403) {
+            display.style.color = 'red';
+            display.innerHTML = `<p class='ref'>Invalid Reference!</p><p>Please enter a valid reference</p>`;
+            setTimeout(function () {
+                location.reload();
+                display.style.color = 'auto';
+            }, 2000);
+            return;
         }
+
         var got_items = JSON.parse(this.responseText);
 
-        if (vod||verse.length < 1) {
-            display.innerHTML = "";
-             currentchapter=chapter;
-            if (currentchapter<1){
-    chp_c=1;
-            }
-            else{
-                chp_c=currentchapter;
-                document.getElementById('chapter-list').value=currentchapter;
-            }
-            var arr='';
-            arr+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+"  "+`${ver}</p>`
-            arr+="<ol>";
-            
-            for (var i = 0; i < got_items.data.length; i++) {
-                var currentVerse = got_items.data[i].verse;
-            
-                if (!arr_verse.includes(currentVerse)) {
-                    arr_verse.push(currentVerse);
-                    arr += `<li> ${got_items.data[i].text.replaceAll("¶", "").replaceAll(".", ". ")}</li>`;
-                }
-            }
-            display.innerHTML+=arr+"</ol>"+`<button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
-    <button class="chp-nxt" id="chp-nxt" onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>`
-        }
-               else {
+   
+        
+            if (vod || verse.length < 1) {
                 display.innerHTML = "";
-                currentchapter=chapter;
-            display.innerHTML+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+ " : " +`${verse}`+"  "+`${ver}</p>`;
-            display.innerHTML += `<p><b>${got_items.verse}</b> : ${got_items.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>`;
-            
-    // <button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
-    // <button class="chp-nxt" id="chp-nxt"onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>
-        }
-      
+                currentchapter = chapter;
+
+          
+                if (currentchapter < 1) {
+                    currentchapter = 1;
+                }
+
+                var arr = '';
+                arr += `<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()} : ${chapter} ${ver}</p>`;
+                arr += "<ol>";
+
+                for (var i = 0; i < got_items.data.length; i++) {
+                    var currentVerse = got_items.data[i].verse;
+
+                    if (!arr_verse.includes(currentVerse)) {
+                        arr_verse.push(currentVerse);
+                        arr += `<li> ${got_items.data[i].text.replaceAll("¶", "").replaceAll(".", ". ")}</li>`;
+                    }
+                }
+
+                display.innerHTML += arr + "</ol>" + `<button class="chp-prev" id="chp-prev" onclick="navigateChapter('${book}', ${Math.max(1, Number(currentchapter) - 1)})">&#11207;</button>
+                    <button class="chp-nxt" id="chp-nxt" onclick="navigateChapter('${book}', ${Number(currentchapter) + 1})">&#11208;</button>`;
+            } else {
+                display.innerHTML = "";
+                currentchapter = chapter;
+                display.innerHTML += `<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()} : ${chapter} : ${verse} ${ver}</p>`;
+                display.innerHTML += `<p><b>${got_items.verse}</b> : ${got_items.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>`;
+            }
+       
     }
 }
+
+function navigateChapter(book, chapter) {
+    
+    const display = document.getElementById('showverse');
+    if (chapter < 1) chapter = 1;
+
+    
+    const api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${document.getElementById('data-version-list').value}/books/${book}/chapters/${chapter}.json`;
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", api, true);
+    xhttp.send();
+    xhttp.onload = function () {
+        if (this.status === 200) {
+            showverse(book, chapter, false); 
+        } else {
+          
+            if (this.status === 404) {
+                showverse(book, chapter - 1, false); 
+            }
+        }
+    }
+}
+
+// function showverse(gbook,gchapter,sts) {
+//     var display = document.getElementById('showverse');
+//     display.innerHTML = "";
+//     var version=document.getElementById('data-version-list').value;  
+//     getversionname(version);    
+//     var bookListValue = document.getElementById('book-list').value.trim();
+//     var chapterListValue = document.getElementById('chapter-list').value.trim();
+
+//     if (sts) {
+//         if (bookListValue === "" || chapterListValue === '' || Number(chapterListValue) < 1) {
+//             alert("Invalid inputs!");
+            
+//             document.getElementById('chapter-list').value = '';
+//             return 0;
+//         }
+//     }
+    
+  
+//     var arr_verse = [];
+//     var api = '';
+//     var vod=false;
+//    var chp_c=0;
+ 
+//     if(gbook.length<1&&gchapter===0){//with input that is ('',0,true)
+    
+//     var book = document.getElementById('book-list').value.toLowerCase().replaceAll(" ","");
+//     var chapter = document.getElementById('chapter-list').value;
+//     var verse = document.getElementById('verse-list').value;
+//     console.log(verse);
+//     if (verse.length < 1 ||verse==0) {
+//         verse='';
+//         console.log("bc");
+//         document.getElementById('verse-list').value='';
+//               api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
+//     } else {
+//         console.log("bcv");
+
+//         api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}/verses/${verse}.json`;
+//     }
+// }
+//     else{
+
+//         // document.getElementById('book-list').value='';
+//         document.getElementById('chapter-list').value='';
+//         var chapter = gchapter;
+//         if(chapter===0){
+//             chapter=1;
+//            }
+//            autoFill(document.getElementById('chapter-list'), 'data-chapter-list');
+//         // showverse('',0); 
+//         document.getElementById('verse-list').value='';
+//         vod=true;
+//         var book = gbook.toLowerCase().replaceAll(" ","");
+        
+//         document.getElementById('chapter-list').value=chapter;
+//         document.getElementById('book-list').value=book;
+//         api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
+//     }
+   
+   
+
+
+
+//     const xhttp = new XMLHttpRequest();
+//     xhttp.open("GET", api, true);
+//     xhttp.send();
+//     xhttp.onload = function () {
+//         console.log(this.status);
+//         if(this.status===403){
+//             display.style.color='red';
+
+//             display.innerHTML=
+//         `<p class='ref'>Invalid Reference !</p><p>Please enter a valid reference</p>`;
+      
+//         setTimeout(function() {
+            
+//             location.reload();
+//             display.style.color='auto';
+//         }, 2000);
+//         }
+//         var got_items = JSON.parse(this.responseText);
+
+//         if (vod||verse.length < 1) {
+//             display.innerHTML = "";
+//              currentchapter=chapter;
+//             if (currentchapter<1){
+//     chp_c=1;
+//             }
+//             else{
+//                 chp_c=currentchapter;
+//                 document.getElementById('chapter-list').value=currentchapter;
+//             }
+//             var arr='';
+//             arr+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+"  "+`${ver}</p>`
+//             arr+="<ol>";
+            
+//             for (var i = 0; i < got_items.data.length; i++) {
+//                 var currentVerse = got_items.data[i].verse;
+            
+//                 if (!arr_verse.includes(currentVerse)) {
+//                     arr_verse.push(currentVerse);
+//                     arr += `<li> ${got_items.data[i].text.replaceAll("¶", "").replaceAll(".", ". ")}</li>`;
+//                 }
+//             }
+//             display.innerHTML+=arr+"</ol>"+`<button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
+//     <button class="chp-nxt" id="chp-nxt" onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>`
+//         }
+//                else {
+//                 display.innerHTML = "";
+//                 currentchapter=chapter;
+//             display.innerHTML+=`<p class='ref'>${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()}`+ " : " +`${chapter}`+ " : " +`${verse}`+"  "+`${ver}</p>`;
+//             display.innerHTML += `<p><b>${got_items.verse}</b> : ${got_items.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>`;
+            
+//     // <button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
+//     // <button class="chp-nxt" id="chp-nxt"onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>
+//         }
+      
+//     }
+// }
 function autoFill(input, datalistId) {
     
     var datalist = document.getElementById(datalistId);
@@ -283,7 +411,7 @@ function randomverse() {
 
 function readfull(bn,c){
     showverse(bn,c,false);
-    document.getElementById('book-list').value=bn.toLowerCase;
+    document.getElementById('book-list').value=bn;
     document.getElementById('chapter-list').value=c;
 }
 function getversionname(id) {
