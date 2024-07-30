@@ -181,12 +181,15 @@ function showverse(gbook,gchapter,sts) {
     xhttp.onload = function () {
         console.log(this.status);
         if(this.status===403){
+            display.style.color='red';
+
             display.innerHTML=
         `<p class='ref'>Invalid Reference !</p><p>Please enter a valid reference</p>`;
       
         setTimeout(function() {
             location.reload();
-        }, 1000);
+            display.style.color='auto';
+        }, 2000);
         }
         var got_items = JSON.parse(this.responseText);
 
@@ -262,7 +265,7 @@ function randomverse() {
             var display = document.getElementById('showverse');
             display.innerHTML = `
             <p class='head'>VERSE OF THE DAY</p>
-                <p class='ref'>${verse.bookname} : ${verse.chapter} : ${verse.verse}</p>
+                <p class='ref'>${verse.bookname} : ${verse.chapter} : ${verse.verse}`+"  "+`NIV</p>
                 <p><b>${verse.verse}</b> : ${verse.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>
                 <button class='rfchp' onclick="readfull('${verse.bookname}',${verse.chapter})">Read full chapter &#11208;</button>
             `;

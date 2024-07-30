@@ -160,8 +160,7 @@ body{
 .div-select{
   position: sticky;
   top:0;
-  background-color: white;
-  
+  background-color: whitesmoke;
   z-index: 10;
   width: 100%;
   display: flex;
@@ -175,13 +174,20 @@ body{
   select,input{
     border: 0.5px solid rgba(128, 128, 128, 0.153);
     border-radius: 5px;
-    height: 30px;
+    height: 35px;
     text-align: center;
     width: min-content;
     option{
       text-align: left;
     }
+   
+    option:checked{
+      text-align: center;
+      background-color: grey;
+      color: white;
+    }
   }
+  
   
   .readbuttondiv{
     display: flex;
