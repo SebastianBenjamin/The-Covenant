@@ -1,5 +1,28 @@
 var currentchapter='';
 var ver;
+
+var chp_en = document.getElementById("chapter-list");
+var vse_en=document.getElementById("verse-list");
+var bk_en=document.getElementById("book-list");
+chp_en.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    showverse('',0,true);
+  }
+});
+vse_en.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    showverse('',0,true);
+  }
+});
+bk_en.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    showverse('',0,true);
+  }
+});
+
  function onloadfun(){
 
     var display=document.getElementById('data-version-list');
@@ -90,7 +113,8 @@ function getverses(){
 }
 
 function showverse(gbook,gchapter,sts) {
-  
+    var display = document.getElementById('showverse');
+    display.innerHTML = "";
     var version=document.getElementById('data-version-list').value;  
     getversionname(version);    
     var bookListValue = document.getElementById('book-list').value.trim();
@@ -99,14 +123,13 @@ function showverse(gbook,gchapter,sts) {
     if (sts) {
         if (bookListValue === "" || chapterListValue === '' || Number(chapterListValue) < 1) {
             alert("Invalid inputs!");
-            document.getElementById('book-list').value = '';
+            
             document.getElementById('chapter-list').value = '';
             return 0;
         }
     }
     
-    var display = document.getElementById('showverse');
-    display.innerHTML = "";
+  
     var arr_verse = [];
     var api = '';
     var vod=false;
@@ -157,7 +180,14 @@ function showverse(gbook,gchapter,sts) {
     xhttp.send();
     xhttp.onload = function () {
         console.log(this.status);
+        if(this.status===403){
+            display.innerHTML=
+        `<p class='ref'>Invalid Reference !</p><p>Please enter a valid reference</p>`;
       
+        setTimeout(function() {
+            location.reload();
+        }, 1000);
+        }
         var got_items = JSON.parse(this.responseText);
 
         if (vod||verse.length < 1) {
@@ -194,6 +224,7 @@ function showverse(gbook,gchapter,sts) {
     // <button class="chp-prev" id="chp-prev" onclick="showverse('${book}',`+(Number(chp_c)-1)+`)">&#11207;</button>
     // <button class="chp-nxt" id="chp-nxt"onclick="showverse('${book}',`+(Number(chp_c)+1)+`)">&#11208;</button>
         }
+      
     }
 }
 function autoFill(input, datalistId) {
