@@ -19,8 +19,8 @@
 - **JavaScript**: Implements the application's functionality, including dynamic content updates.
 - **XMLHttpRequest**: Facilitates API requests to retrieve and display sacred text data.
 - **Open APIs**:
-    - [Bible Text Data API](link unavailable): Provides the textual content of the Bible.
-    - [Verse of the Day API](link unavailable): Delivers a daily verse for inspiration.
+    - [Bible Text Data API](https://github.com/wldeh/bible-api?tab=readme-ov-file#get-a-verse): Provides the textual content of the Bible.
+    - [Verse of the Day API](https://labs.bible.org/api_web_service): Delivers a daily verse for inspiration.
 
 ## Files
 
