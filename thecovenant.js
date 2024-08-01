@@ -387,25 +387,32 @@ function randomverse() {
     xhttp.open("GET", api, true);
     xhttp.send();
     xhttp.onload = function () {
+        var display = document.getElementById('showverse');
+var array=[];
         document.getElementById('book-list').value='';
         document.getElementById('chapter-list').value='';
         document.getElementById('verse-list').value='';
         var got_items = JSON.parse(this.responseText);
-        if (got_items.length > 0) {
-            var verse = got_items[0]; 
-            var display = document.getElementById('showverse');
-            display.innerHTML = `
+     
+            for(var i=0;i<got_items.length;i++){
+               array+=
+                ` ${got_items[i].verse},`+"  ";
+            }
+            display.innerHTML += `
             <p class='head'>VERSE OF THE DAY</p>
-                <p class='ref'>${verse.bookname} : ${verse.chapter} : ${verse.verse}`+"  "+`NIV</p>
+            <p class='ref'>${got_items[0].bookname} : ${got_items[0].chapter} :${array}NIV</p>`;
+            
+        for (var i =0 ; i<got_items.length ;i++) {
+            var verse = got_items[i]; 
+           display.innerHTML+=`
+              
                 <p><b>${verse.verse}</b> : ${verse.text.replaceAll("¶", "").replaceAll(".", ". ")}</p>
-                <button class='rfchp' onclick="readfull('${verse.bookname}',${verse.chapter})">Read full chapter &#11208;</button>
+               
             `;
              currentchapter=verse.chapter;
             
-        } else {
-            var display = document.getElementById('showverse');
-            display.innerHTML = "No verse of the day available.";
         }
+        display.innerHTML+=`<button class='rfchp' onclick="readfull('${verse.bookname}',${verse.chapter})">Read full chapter &#11208;</button> `;
     }
 }
 
