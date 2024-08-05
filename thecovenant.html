@@ -1,57 +1,78 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Covenant</title>
-    <link href="./thecovenant.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="./book.png" rel="icon">
-<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-</head>
-<body onload="randomverse(); onloadfun();">
-<div class="navbar fira-sans-regular">
-    <img src="./book.png">
-    <div>
-        <p class="nav-tit">The Covenant</p> 
+    <link href="./thecovenant.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="./icon-192.png" rel="icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body onload="randomverse(); onloadfun();">
+    <div class="navbar fira-sans-regular">
+      <img src="./book.png" />
+      <div>
+        <p class="nav-tit">The Covenant</p>
         <p class="nav-sub">Journey Through Sacred Promises</p>
+      </div>
     </div>
-   
-</div>
-<div class="div-select">
-    <div>
-        <label for="data-version-list" >Version : </label>
-        <select id="data-version-list" >
-
-        </select>
+    <div class="div-select">
+      <div>
+        <label for="data-version-list">Version : </label>
+        <select id="data-version-list"></select>
+      </div>
+      <div>
+        <label for="book-list">Book : </label>
+        <input
+          list="data-book-list"
+          type="text"
+          name="book-list"
+          id="book-list"
+          placeholder="Enter Book name"
+          onfocus="getbooks()"
+          onblur="autoFill(this, 'data-book-list')"
+          onchange="clrvc();"
+        />
+        <datalist id="data-book-list"> </datalist>
+      </div>
+      <div>
+        <label for="chapter-list">Chapter : </label>
+        <input
+          list="data-chapter-list"
+          type="numeric"
+          name="chapter-list"
+          id="chapter-list"
+          placeholder="Enter Chapter number"
+          onfocus="getchapters()"
+          onblur="autoFill(this, 'data-chapter-list')"
+        />
+        <datalist id="data-chapter-list"> </datalist>
+      </div>
+      <div>
+        <label for="verse-list">Verse : </label>
+        <input
+          list="data-verse-list"
+          type="numeric"
+          name="verse-list"
+          id="verse-list"
+          placeholder="Enter Verse number"
+          onfocus="getverses()"
+        />
+        <datalist id="data-verse-list"> </datalist>
+      </div>
+      <div class="readbuttondiv">
+        <button onclick="showverse('',0,true)" id="read-button"></button>
+        <label for="read-button">Read</label>
+      </div>
     </div>
-<div>
-    <label for="book-list">Book : </label>
-    <input list="data-book-list" type="text" name="book-list" id="book-list" placeholder="Enter Book name" onfocus="getbooks()" onblur="autoFill(this, 'data-book-list')" onchange="clrvc();">
-    <datalist id="data-book-list">
-    </datalist>
-</div><div>
-    <label for="chapter-list">Chapter : </label>
-    <input list="data-chapter-list" type="numeric" name="chapter-list" id="chapter-list" placeholder="Enter Chapter number" onfocus="getchapters()" onblur="autoFill(this, 'data-chapter-list')">
-    <datalist id="data-chapter-list">
-    </datalist>
-</div><div>
-    <label for="verse-list">Verse : </label>
-    <input list="data-verse-list" type="numeric" name="verse-list" id="verse-list" placeholder="Enter Verse number" onfocus="getverses()"  >
-    <datalist id="data-verse-list">
-    </datalist>
-</div>
-<div class="readbuttondiv">
-<button onclick="showverse('',0,true)" id="read-button"> </button>
-<label for="read-button">Read</label>
-</div></div>
-<div id="showverse" class="showverse">
-
-    <!-- <button class="chp-prev" id="chp-prev">prev</button>
+    <div id="showverse" class="showverse">
+      <!-- <button class="chp-prev" id="chp-prev">prev</button>
     <button class="chp-next" id="chp-next">next</button> -->
-
-
-</div>
-<script src="./thecovenant.js"></script>
-</body>
+    </div>
+    <script src="./thecovenant.js"></script>
+  </body>
 </html>

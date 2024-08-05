@@ -1,118 +1,116 @@
 .fira-sans-thin {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 100;
-    font-style: normal;
-  }
-  
-  .fira-sans-extralight {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 200;
-    font-style: normal;
-  }
-  
-  .fira-sans-light {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .fira-sans-regular {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
-  .fira-sans-medium {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-  
-  .fira-sans-semibold {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-  
-  .fira-sans-bold {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  .fira-sans-extrabold {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 800;
-    font-style: normal;
-  }
-  
-  .fira-sans-black {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 900;
-    font-style: normal;
-  }
-  
-  .fira-sans-thin-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 100;
-    font-style: italic;
-  }
-  
-  .fira-sans-extralight-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 200;
-    font-style: italic;
-  }
-  
-  .fira-sans-light-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 300;
-    font-style: italic;
-  }
-  
-  .fira-sans-regular-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-  }
-  
-  .fira-sans-medium-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 500;
-    font-style: italic;
-  }
-  
-  .fira-sans-semibold-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 600;
-    font-style: italic;
-  }
-  
-  .fira-sans-bold-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 700;
-    font-style: italic;
-  }
-  
-  .fira-sans-extrabold-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 800;
-    font-style: italic;
-  }
-  
-  .fira-sans-black-italic {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 900;
-    font-style: italic;
-  }
-  
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
 
-body{
-    margin:0;
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    
+.fira-sans-extralight {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.fira-sans-light {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fira-sans-regular {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fira-sans-medium {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.fira-sans-semibold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.fira-sans-bold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.fira-sans-extrabold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.fira-sans-black {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.fira-sans-thin-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.fira-sans-extralight-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.fira-sans-light-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.fira-sans-regular-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.fira-sans-medium-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.fira-sans-semibold-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.fira-sans-bold-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.fira-sans-extrabold-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.fira-sans-black-italic {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
+
+body {
+  margin: 0;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -122,44 +120,46 @@ body{
   background: darkblue;
 }
 
-.navbar{
-    /* width:100%; */
-    height:min-content;
-    /* backdrop-filter: blur(16px) saturate(180%); */
-    background-color: aliceblue;
-    position: sticky;
-    /* top: 0; */
-    gap: 0;
-    padding: 5px;
+.navbar {
+  /* width:100%; */
+  height: min-content;
+  /* backdrop-filter: blur(16px) saturate(180%); */
+  background-color: aliceblue;
+  position: sticky;
+  /* top: 0; */
+  gap: 0;
+  padding: 5px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: bolder;
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+  img {
+    margin: 0 20px 0 20px;
+    height: 65px;
+  }
+  div {
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: xx-large;
-    font-weight: bolder;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-    img{
-      margin:0 20px 0 20px ;
-    }
-    div{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .nav-tit{
+  }
+  .nav-tit {
     margin: 0;
-      font-size: larger;
-    }
+    font-size: larger;
+  }
 
-    .nav-sub{
-      margin: 10px;
-      font-size: medium;
-    }
+  .nav-sub {
+    margin: 10px;
+    font-size: medium;
+  }
 }
-.div-select{
+.div-select {
+  padding: 5px 0 5px 0;
   position: sticky;
-  top:0;
+  top: 0;
   background-color: whitesmoke;
   z-index: 10;
   width: 100%;
@@ -167,96 +167,98 @@ body{
   justify-content: space-evenly;
   align-items: center;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-  
-  label{
+
+  label {
     font-size: larger;
   }
-  select,input{
+  select,
+  input {
     border: 0.5px solid rgba(128, 128, 128, 0.153);
     border-radius: 5px;
     height: 35px;
     text-align: center;
     width: min-content;
-    option{
+    option {
       text-align: left;
     }
-   
-    option:checked{
+
+    option:checked {
       text-align: center;
       background-color: grey;
       color: white;
     }
   }
-  
-  
-  .readbuttondiv{
+
+  .readbuttondiv {
     display: flex;
     flex-direction: column;
     align-items: center;
-    label{
+    label {
       font-size: small;
     }
-    button{
-      height: 40px;
-      width: 40px;
-      background:url(./book.png) ;
+    button {
+      height: 30px;
+      width: 30px;
+      background: url(./search-interface-symbol.png);
       background-size: contain;
       border: 0;
-      cursor:pointer ;
-     }
+      cursor: pointer;
+      transition: transform 1s ease;
+    }
+    button:hover {
+      transform: rotateZ(45deg);
+    }
   }
 }
-.showverse{
-
-position: relative;
-width: 100%;
-   padding: 20px 0 20px 0;
-   margin: 0;
-   display: flex;
-   flex-direction: column;
-   /* justify-content: center; */
-   flex-wrap: wrap;
-  p,li{
-    margin:0 100px 10 100px;
-    width:fit-content;
+.showverse {
+  position: relative;
+  width: 100%;
+  padding: 20px 0 20px 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  p,
+  li {
+    margin: 0 100px 10 100px;
+    width: fit-content;
     padding: 0;
     text-align: justify;
   }
-  
 
-.rfchp{
-  margin:10px 100px 10 100px;
-  height: fit-content;
-  width:fit-content;
-   background-color:transparent;
-   padding: 5px 10px 5px 10px;
-   border: 1px solid black; 
-   border-radius: 5px;
-   color: black;
-   cursor:pointer;
-   }
-.rfchp:hover{
-  color: black;
-  background-color: lightskyblue; 
-  border-color: transparent;
+  .rfchp {
+    margin: 10px 100px 10 100px;
+    height: fit-content;
+    width: fit-content;
+    background-color: transparent;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+  }
+  .rfchp:hover {
+    color: black;
+    background-color: lightskyblue;
+    border-color: transparent;
+  }
 }
-}
-.head{
-
+.head {
   text-decoration: underline 1px rgb(206, 206, 206);
-font-weight: bolder;
-font-size: larger;
- } 
- .ref{
+  font-weight: bolder;
+  font-size: larger;
+}
+.ref {
   font-weight: bold;
   text-align: center;
- }
+}
 
-.chp-prev{
+.chp-prev {
   /* display: none; */
   position: fixed;
-top: 50%;
-left: 10px;
+  top: 50%;
+  left: 10px;
   height: fit-content;
   width: fit-content;
   background-color: transparent;
@@ -264,21 +266,20 @@ left: 10px;
   border: 0;
   color: darkblue;
 }
-.chp-nxt{
+.chp-nxt {
   /* display: none; */
   position: fixed;
-top: 50%;
-right: 10px;
+  top: 50%;
+  right: 10px;
   height: fit-content;
   width: fit-content;
   background-color: transparent;
   font-size: xx-large;
   border: 0;
   color: darkblue;
-
 }
-.chp-nxt:hover ,.chp-prev:hover {
-  transform: scale3d(1.2,1.2,1.2);
+.chp-nxt:hover,
+.chp-prev:hover {
+  transform: scale3d(1.2, 1.2, 1.2);
   transition: transform 0.3s ease;
-
 }
