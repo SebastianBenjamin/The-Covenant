@@ -1,285 +1,338 @@
-.fira-sans-thin {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.fira-sans-extralight {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 200;
-  font-style: normal;
-}
-
-.fira-sans-light {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 300;
-  font-style: normal;
-}
-
-.fira-sans-regular {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.fira-sans-medium {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-}
-
-.fira-sans-semibold {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
-.fira-sans-bold {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.fira-sans-extrabold {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 800;
-  font-style: normal;
-}
-
-.fira-sans-black {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 900;
-  font-style: normal;
-}
-
-.fira-sans-thin-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 100;
-  font-style: italic;
-}
-
-.fira-sans-extralight-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 200;
-  font-style: italic;
-}
-
-.fira-sans-light-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 300;
-  font-style: italic;
-}
-
-.fira-sans-regular-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.fira-sans-medium-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-}
-
-.fira-sans-semibold-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 600;
-  font-style: italic;
-}
-
-.fira-sans-bold-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
-.fira-sans-extrabold-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 800;
-  font-style: italic;
-}
-
-.fira-sans-black-italic {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 900;
-  font-style: italic;
-}
-
-body {
+/* Global Reset and Base Styles */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-::-webkit-scrollbar {
-  width: 5px;
-  background-color: grey;
-}
-::-webkit-scrollbar-thumb {
-  background: darkblue;
+  padding: 0;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Fira Sans', sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+/* Responsive Navbar */
 .navbar {
-  /* width:100%; */
-  height: min-content;
-  /* backdrop-filter: blur(16px) saturate(180%); */
-  background-color: aliceblue;
-  position: sticky;
-  /* top: 0; */
-  gap: 0;
-  padding: 5px;
   display: flex;
-  /* flex-direction: column; */
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  font-size: xx-large;
-  font-weight: bolder;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-  img {
-    margin: 0 20px 0 20px;
-    height: 65px;
-  }
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .nav-tit {
-    margin: 0;
-    font-size: larger;
-  }
-
-  .nav-sub {
-    margin: 10px;
-    font-size: medium;
-  }
-}
-.div-select {
-  padding: 5px 0 5px 0;
-  position: sticky;
-  top: 0;
-  background-color: whitesmoke;
-  z-index: 10;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-
-  label {
-    font-size: larger;
-  }
-  select,
-  input {
-    border: 0.5px solid rgba(128, 128, 128, 0.153);
-    border-radius: 5px;
-    height: 35px;
-    text-align: center;
-    width: min-content;
-    option {
-      text-align: left;
-    }
-
-    option:checked {
-      text-align: center;
-      background-color: grey;
-      color: white;
-    }
-  }
-
-  .readbuttondiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    label {
-      font-size: small;
-    }
-    button {
-      height: 30px;
-      width: 30px;
-      background: url(./search-interface-symbol.png);
-      background-size: contain;
-      border: 0;
-      cursor: pointer;
-      transition: transform 1s ease;
-    }
-    button:hover {
-      transform: rotateZ(45deg);
-    }
-  }
-}
-.showverse {
-  position: relative;
-  width: 100%;
-  padding: 20px 0 20px 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
+  padding: 1rem;
+  background-color: aliceblue;
   flex-wrap: wrap;
-  p,
-  li {
-    margin: 0 100px 10 100px;
-    width: fit-content;
-    padding: 0;
-    text-align: justify;
-  }
+  gap: 1rem;
+}
 
-  .rfchp {
-    margin: 10px 100px 10 100px;
-    height: fit-content;
-    width: fit-content;
-    background-color: transparent;
-    padding: 5px 10px 5px 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    color: black;
-    cursor: pointer;
-  }
-  .rfchp:hover {
-    color: black;
-    background-color: lightskyblue;
-    border-color: transparent;
-  }
+.navbar img {
+  max-width: 75px;
+  height: auto;
 }
-.head {
-  text-decoration: underline 1px rgb(206, 206, 206);
-  font-weight: bolder;
-  font-size: larger;
-}
-.ref {
-  font-weight: bold;
+
+.navbar div {
   text-align: center;
 }
 
-.chp-prev {
-  /* display: none; */
-  position: fixed;
-  top: 50%;
-  left: 10px;
-  height: fit-content;
-  width: fit-content;
-  background-color: transparent;
-  font-size: xx-large;
-  border: 0;
-  color: darkblue;
+.nav-tit {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
-.chp-nxt {
-  /* display: none; */
-  position: fixed;
-  top: 50%;
-  right: 10px;
-  height: fit-content;
-  width: fit-content;
-  background-color: transparent;
-  font-size: xx-large;
-  border: 0;
-  color: darkblue;
+
+.nav-sub {
+  font-size: 1rem;
+  color: #666;
 }
-.chp-nxt:hover,
-.chp-prev:hover {
-  transform: scale3d(1.2, 1.2, 1.2);
+
+/* Responsive Selection Area */
+.div-select {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: whitesmoke;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.div-select > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.div-select label {
+  font-weight: bold;
+}
+
+.div-select input, 
+.div-select select {
+  width: 100%;
+  max-width: 250px;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.readbuttondiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.readbuttondiv button {
+  width: 50px;
+  height: 50px;
+  background: url('./search-interface-symbol.png') no-repeat center;
+  background-size: cover;
+  border: none;
+  cursor: pointer;
   transition: transform 0.3s ease;
+}
+
+.readbuttondiv button:hover {
+  transform: rotate(45deg);
+}
+
+/* Verse Display Area */
+.showverse {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.showverse p, 
+.showverse li {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.showverse li:hover,
+.showverse p:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+/* Navigation Buttons */
+.chp-prev, 
+.chp-nxt {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: darkblue;
+  cursor: pointer;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  
+}
+
+.chp-prev {
+  left: 10px;
+}
+
+.chp-nxt {
+  right: 10px;
+}
+
+.chp-prev:hover, 
+.chp-nxt:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .div-select {
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+
+  .div-select > div {
+      width: 100%;
+  }
+
+  .showverse p, 
+  .showverse li {
+      margin: 0 1rem;
+  }
+
+  .chp-prev, 
+  .chp-nxt {
+      position: fixed;
+      margin: 1rem auto;
+      display: block;
+      transform: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar img {
+      max-width: 50px;
+  }
+
+  .nav-tit {
+      font-size: 1.2rem;
+  }
+
+  .nav-sub {
+      font-size: 0.9rem;
+  }
+
+  .div-select input, 
+  .div-select select {
+      font-size: 0.9rem;
+      padding: 0.3rem;
+  }
+}
+
+/* Floating Buttons Area */
+.buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.vod, 
+.highlight, 
+.show-highlights-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.vod:hover, 
+.highlight:hover, 
+.show-highlights-btn:hover {
+  transform: scale(1.1);
+}
+ .highlight img{
+  max-height: 110% !important;
+  max-width: 110% !important;
+  border-radius: 50% 50%;
+
+}
+
+.vod img, 
+.highlight img, 
+.show-highlights-btn img {
+  max-width: 70%;
+  max-height: 70%;
+}
+
+/* Highlights Panel */
+.highlights-panel {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  max-width: 350px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  z-index: 200;
+}
+
+.highlights-panel.open {
+  right: 0;
+}
+
+.highlights-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: aliceblue;
+  border-bottom: 1px solid #ddd;
+}
+
+.close-highlights {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.highlighted-verse-item {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.highlighted-verse-item:hover {
+  background-color: #f5f5f5;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: darkblue;
+  border-radius: 4px;
+}
+/* Read Full Chapter Button */
+.rfchp {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: darkblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+  max-width: 250px;
+}
+
+.rfchp:hover {
+  background-color: #0000cd;
+  transform: scale(1.05);
+}
+
+.rfchp:active {
+  transform: scale(0.95);
+}
+
+@media screen and (max-width: 480px) {
+  .rfchp {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    max-width: 200px;
+  }
 }

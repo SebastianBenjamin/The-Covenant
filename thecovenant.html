@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
   </head>
-  <body onload="randomverse(); onloadfun();">
+  <body onload=" onloadfun();">
     <div class="navbar fira-sans-regular">
       <img src="./book.png" />
       <div>
@@ -72,6 +72,27 @@
     <div id="showverse" class="showverse">
       <!-- <button class="chp-prev" id="chp-prev">prev</button>
     <button class="chp-next" id="chp-next">next</button> -->
+    </div>
+    <div class="highlights-panel" id="highlightsPanel">
+      <div class="highlights-panel-header">
+        <h3>Highlighted Verses</h3>
+        <button class="close-highlights" onclick="toggleHighlightsPanel()">×</button>
+      </div>
+      <div id="highlightsList"></div>
+    </div> 
+    
+    <div class="buttons">
+
+      <div class="vod" onclick="randomverse()">
+        <img src="https://img.icons8.com/3d-fluency/94/wheat.png" alt="" title="Verse of the day">
+        <!-- <p>Verse of the day</p> -->
+      </div>
+      <div class="highlight" title="Highlighter color">
+        <img id="hightlight-img" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/100/external-highlighter-back-to-school-flaticons-lineal-color-flat-icons.png" alt="">
+      </div>
+    <button class="show-highlights-btn" onclick="toggleHighlightsPanel()" title="Highlighted Verses">
+      <img src="https://img.icons8.com/ios/50/list.png" alt="Show highlights">
+    </button>
     </div>
     <script src="./thecovenant.js"></script>
   </body>
