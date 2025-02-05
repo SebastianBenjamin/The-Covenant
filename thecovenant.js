@@ -262,8 +262,12 @@
                     }
         
                     display.innerHTML += arr + "</ol>" + 
-                        `<button title='Previous Chapter' class="chp-prev" id="chp-prev" onclick="navigateChapter('${book}', ${Math.max(1, Number(currentchapter) - 1)})">&#11207;</button>
-                        <button class="chp-nxt" title='Next Chapter' id="chp-nxt" onclick="navigateChapter('${book}', ${Number(currentchapter) + 1})">&#11208;</button>`;
+                        `<button title='Previous Chapter' class="chp-prev" id="chp-prev" onclick="navigateChapter('${book}', ${Math.max(1, Number(currentchapter) - 1)})"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0,0,256,256">
+<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(0.5,0.5)"><path d="M7.9,256c0,-137 111.1,-248.1 248.1,-248.1c137,0 248.1,111.1 248.1,248.1c0,137 -111.1,248.1 -248.1,248.1c-137,0 -248.1,-111.1 -248.1,-248.1z" fill="#00008b"></path><path d="M231.4,258.7c30.7,-30.7 61.4,-61.4 92.1,-92.1c26.8,-26.8 -14.9,-68.2 -41.8,-41.3c-37.6,37.6 -75.2,75.2 -112.8,112.8c-11.4,11.4 -11,30.3 0.2,41.5c37.6,37.6 75.2,75.2 112.8,112.8c26.8,26.8 68.2,-14.9 41.3,-41.8c-30.6,-30.7 -61.2,-61.3 -91.8,-91.9z" fill="#ffffff"></path></g></g>
+</svg></button>
+                        <button class="chp-nxt" title='Next Chapter' id="chp-nxt" onclick="navigateChapter('${book}', ${Number(currentchapter) + 1})"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0,0,256,256">
+<g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(0.5,0.5)"><path d="M7.9,256c0,-137 111.1,-248.1 248.1,-248.1c137,0 248.1,111.1 248.1,248.1c0,137 -111.1,248.1 -248.1,248.1c-137,0 -248.1,-111.1 -248.1,-248.1z" fill="#00008b"></path><path d="M357.4,237.8c-37.6,-37.6 -75.2,-75.2 -112.8,-112.8c-26.8,-26.8 -68.2,14.9 -41.3,41.8c30.6,30.6 61.3,61.2 91.9,91.9c-30.7,30.7 -61.4,61.4 -92.1,92.1c-26.8,26.8 14.9,68.2 41.8,41.3c37.6,-37.6 75.2,-75.2 112.8,-112.8c11.2,-11.3 10.9,-30.3 -0.3,-41.5z" fill="#ffffff"></path></g></g>
+</svg></button>`;
                 } else {
                     display.innerHTML = "";
                     currentchapter = chapter;
@@ -383,7 +387,7 @@
                 currentchapter = verse.chapter;
             }
             saveCurrentVerse(verse.bookname, verse.chapter);
-            display.innerHTML += `<button class='rfchp' onclick="readfull('${verse.bookname}',${verse.chapter})">Read full chapter &#11208;</button> `;
+            display.innerHTML += `<button class='rfchp' onclick="readfull('${verse.bookname}',${verse.chapter})">Read full chapter </button> `;
         };
     }
 
