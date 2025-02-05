@@ -363,7 +363,7 @@
             }
             display.innerHTML += `
                 <p class='head'>VERSE OF THE DAY</p>
-                <p class='ref'>${got_items[0].bookname} : ${got_items[0].chapter} :${array}NIV</p>`;
+                <p class='ref'>${got_items[0].bookname} : ${got_items[0].chapter} :${array} </p>`;
     
             for (var i = 0; i < got_items.length; i++) {
                 var verse = got_items[i];
