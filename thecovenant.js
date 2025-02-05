@@ -515,45 +515,59 @@
         const highlightsList = document.getElementById('highlightsList');
         highlightsList.innerHTML = '';
         
+        // Create an array to hold verses
+        const versesArray = [];
+        
         // Get all items from localStorage
         for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          try {
-            const data = JSON.parse(localStorage.getItem(key));
+            const key = localStorage.key(i);
+            try {
+                const data = JSON.parse(localStorage.getItem(key));
+                
+                // Check if this is a highlighted verse (has color property)
+                if (data && data.color) {
+                    versesArray.push({ key, data });
+                }
+            } catch (e) {
+                console.log('Skipping non-JSON localStorage item');
+            }
+        }
+    
+        // Sort verses by reference (key)
+        versesArray.sort((a, b) => a.key.localeCompare(b.key));
+    
+        // Render the sorted verses
+        versesArray.forEach(verse => {
+            const { key, data } = verse;
             
-            // Check if this is a highlighted verse (has color property)
-            if (data && data.color) {
-              const verseDiv = document.createElement('div');
-              verseDiv.className = 'highlighted-verse-item';
-              verseDiv.style.backgroundColor = data.color + '40'; // Add transparency to background
-              
-              // Extract book and chapter from the reference
-              const parts = key.split(':');
-              const book = parts[0].trim();
-              const chapter = parts[1].trim();
-              
-              verseDiv.innerHTML = `
+            const verseDiv = document.createElement('div');
+            verseDiv.className = 'highlighted-verse-item';
+            verseDiv.style.backgroundColor = data.color + '40'; // Add transparency to background
+            
+            // Extract book and chapter from the reference
+            const parts = key.split(':');
+            const book = parts[0].trim();
+            const chapter = parts[1].trim();
+            
+            verseDiv.innerHTML = `
                 <div class="verse-reference">${key}</div>
                 <div class="verse-text">${data.text}</div>
-              `;
-              
-              // Add click handler to show full chapter
-              verseDiv.onclick = () => {
+            `;
+            
+            // Add click handler to show full chapter
+            verseDiv.onclick = () => {
                 showverse(book, chapter, false);
                 toggleHighlightsPanel();
-              };
-              
-              highlightsList.appendChild(verseDiv);
-            }
-          } catch (e) {
-            console.log('Skipping non-JSON localStorage item');
-          }
-        }
+            };
+            
+            highlightsList.appendChild(verseDiv);
+        });
         
         if (highlightsList.children.length === 0) {
-          highlightsList.innerHTML = '<div class="highlighted-verse-item">No highlighted verses yet</div>';
+            highlightsList.innerHTML = '<div class="highlighted-verse-item">No highlighted verses yet</div>';
         }
-      }
+    }
+    
     //   document.addEventListener('keydown', (e) => {
     //     if (e.key.toLowerCase() === 'h') {
     //       toggleHighlightsPanel();
