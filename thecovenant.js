@@ -183,7 +183,11 @@
                 verse = "";
                 api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
             } else {
+                console.log('verseeeee');
+                console.log(verse);
+                
                 api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}/verses/${verse}.json`;
+                console.log(api);
             }
         } else {
             document.getElementById("chapter-list").value = "";
@@ -219,7 +223,7 @@
             }
     
             var got_items = JSON.parse(this.responseText);
-    
+            
             if (vod || verse.length < 1) {
                 var got_items = JSON.parse(this.responseText);
 
@@ -293,7 +297,32 @@
                                            <b>${verse}</b> : ${cleanedText}
                                            </p>`;
                 }
-            };
+            }else {
+                display.innerHTML = "";
+                currentchapter = chapter;
+            
+                var cleanedText = got_items.text
+                    .replaceAll("¶", "")
+                    .replaceAll(".", ". ");
+            
+                var verseReference = `${book.charAt(0).toUpperCase() + book.slice(1).toLowerCase()} : ${chapter} : ${verse}`;
+                
+                // Check if single verse is highlighted
+                const storedData = localStorage.getItem(verseReference);
+                let highlightStyle = '';
+                if (storedData) {
+                    const parsedData = JSON.parse(storedData);
+                    if (parsedData.color) {
+                        highlightStyle = `style="background-color: ${parsedData.color};"`;
+                    }
+                }
+            
+                display.innerHTML += `<p class='ref'>${verseReference}</p>`;
+                display.innerHTML += `<p ${highlightStyle} onclick="saveCurrentVerse('${book}', ${chapter}, ${verse}, '${cleanedText}');HighLightVerse('${verseReference}=${cleanedText}',this)">
+                                       <b>${verse}</b> : ${cleanedText}
+                                       </p>
+                                       <button class='rfchp' onclick="readfull('${book}',${chapter})">Read full chapter</button>`;
+            }
             saveCurrentVerse(book, chapter);
         }}
         
@@ -522,8 +551,8 @@
           highlightsList.innerHTML = '<div class="highlighted-verse-item">No highlighted verses yet</div>';
         }
       }
-      document.addEventListener('keydown', (e) => {
-        if (e.key.toLowerCase() === 'h') {
-          toggleHighlightsPanel();
-        }
-      });
+    //   document.addEventListener('keydown', (e) => {
+    //     if (e.key.toLowerCase() === 'h') {
+    //       toggleHighlightsPanel();
+    //     }
+    //   });
