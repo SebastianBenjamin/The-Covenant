@@ -156,14 +156,16 @@
     
         if (sts) {
             if (
-                bookListValue === "" ||
-                chapterListValue === "" ||
-                Number(chapterListValue) < 1
+                bookListValue === "" 
             ) {
                 alert("Invalid inputs!");
                 document.getElementById("chapter-list").value = "";
                 window.location.reload();
                 return 0;
+            }
+            else if(chapterListValue===""||chapterListValue<1){
+                chapterListValue=1;
+                document.getElementById("chapter-list").value = chapterListValue;
             }
         }
     
@@ -388,7 +390,7 @@
             var got_items = JSON.parse(this.responseText);
     
             for (var i = 0; i < got_items.length; i++) {
-                array += ` ${got_items[i].verse},` + "  ";
+                array += ` ${got_items[i].verse}` + "  ";
             }
             display.innerHTML += `
                 <p class='head'>VERSE OF THE DAY</p>
