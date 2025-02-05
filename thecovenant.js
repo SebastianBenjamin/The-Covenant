@@ -165,7 +165,7 @@
             }
             else if(chapterListValue===""||chapterListValue<1){
                 chapterListValue=1;
-                document.getElementById("chapter-list").value = chapterListValue;
+                document.getElementById("chapter-list").value = chapterListValue.charAt(0).toUpperCase() + chapterListValue.substring(1);
             }
         }
     
@@ -205,7 +205,7 @@
             var book = gbook.toLowerCase().replaceAll(" ", "");
     
             document.getElementById("chapter-list").value = chapter;
-            document.getElementById("book-list").value = book;
+            document.getElementById("book-list").value = book.charAt(0).toUpperCase() + book.substring(1);
             
             api = `https://cdn.jsdelivr.net/gh/wldeh/bible-api/bibles/${version}/books/${book}/chapters/${chapter}.json`;
         }
@@ -371,7 +371,8 @@
             }
         }
 
-        input.value = closestMatch;
+        input.value = closestMatch.charAt(0).toUpperCase() + closestMatch.substring(1);
+
     }
     function randomverse() {
         // console.log('helllo');
