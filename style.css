@@ -336,3 +336,32 @@ html, body {
     max-width: 200px;
   }
 }
+/* Footer Styles */
+.footer {
+  background-color: aliceblue;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid #ddd;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.footer a {
+  color: darkblue;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  color: #0000cd;
+}
+
+/* Adjust footer spacing on mobile */
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+}
