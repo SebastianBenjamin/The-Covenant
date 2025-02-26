@@ -365,3 +365,61 @@ html, body {
     font-size: 0.8rem;
   }
 }
+.download-section {
+  background-color: #f5f5f5;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.download-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.download-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: darkblue;
+}
+
+.download-content p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.download-button {
+  margin-top: 1rem;
+}
+
+.apk-download-link {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: darkblue;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.apk-download-link:hover {
+  background-color: #0000cd;
+  transform: scale(1.05);
+}
+
+@media screen and (max-width: 480px) {
+  .download-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .download-content p {
+    font-size: 1rem;
+  }
+
+  .apk-download-link {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
